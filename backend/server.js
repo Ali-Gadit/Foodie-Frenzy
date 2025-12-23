@@ -22,8 +22,8 @@ app.use(cors({
             'http://localhost:5173',
             'http://localhost:5174'
         ];
-        if(process.env.FRONTEND_URL) allowedOrigins.push(process.env.FRONTEND_URL);
-        if(process.env.ADMIN_URL) allowedOrigins.push(process.env.ADMIN_URL);
+        if(process.env.FRONTEND_URL) allowedOrigins.push(process.env.FRONTEND_URL.replace(/\/+$/, ''));
+        if(process.env.ADMIN_URL) allowedOrigins.push(process.env.ADMIN_URL.replace(/\/+$/, ''));
 
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
